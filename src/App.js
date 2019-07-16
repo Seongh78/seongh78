@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import GlobalStyles from './Styles/GlobalStyles';
+import Theme from './Styles/Theme';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Routes from './Routes';
+import { ThemeProvider } from 'styled-components';
 
-function App() {
+import { Navbar } from './Components';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={Theme}>
+      <>
+        <Navbar />
+        {/* reset css & 기본 태그 css를 적용한다.s */}
+        <GlobalStyles />
+
+        {/* router */}
+        <Router>
+          <Routes />
+        </Router>
+      </>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
